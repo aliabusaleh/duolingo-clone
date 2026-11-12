@@ -1,17 +1,16 @@
-import { getSurahs } from "@/db/queries";
+import { getReadingMarks, getSurahs } from "@/db/queries";
 import { JUZ_COUNT, juzBounds } from "@/lib/juz";
-import { getLastRead } from "@/lib/preferences";
 
 import { ReadIndex } from "./read-index";
 
 // Read mode: pick a surah or a juz' to read and listen to, like a mushaf.
 const ReadPage = async () => {
-  const [surahs, lastRead] = await Promise.all([getSurahs(), getLastRead()]);
+  const [surahs, marks] = await Promise.all([getSurahs(), getReadingMarks()]);
   const surahName = new Map(surahs.map((s) => [s.number, s]));
 
   return (
     <ReadIndex
-      lastRead={lastRead}
+      marks={marks}
       surahs={surahs.map((s) => ({
         number: s.number,
         name: s.name,

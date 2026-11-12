@@ -173,4 +173,12 @@ if (OFFLINE)
 
     if (AUDIO_HOSTS.includes(url.hostname))
       event.respondWith(saved(request, false));
+
+    // The mushaf font (lib/quran-font.ts): kept once loaded, so downloaded
+    // pages show the Quran in it offline too.
+    if (
+      url.hostname === "verses.quran.foundation" &&
+      url.pathname.startsWith("/fonts/")
+    )
+      event.respondWith(saved(request, true));
   });

@@ -1,6 +1,6 @@
 import { notFound } from "next/navigation";
 
-import { getPassage } from "@/db/queries";
+import { getPassage, getReadingMarks } from "@/db/queries";
 import { formatNumber, messages } from "@/lib/i18n";
 import { isJuz } from "@/lib/juz";
 import { getLocale } from "@/lib/locale";
@@ -14,9 +14,10 @@ type JuzReadPageProps = {
 const JuzReadPage = async ({ params }: JuzReadPageProps) => {
   const number = Number((await params).number);
   if (!isJuz(number)) notFound();
-  const [passage, locale] = await Promise.all([
+  const [passage, locale, marks] = await Promise.all([
     getPassage("juz", number),
     getLocale(),
+    getReadingMarks(),
   ]);
   if (!passage) notFound();
 
@@ -32,6 +33,7 @@ const JuzReadPage = async ({ params }: JuzReadPageProps) => {
       path={`juz/${number}`}
       previous={link(number - 1)}
       next={link(number + 1)}
+      bookmark={marks.bookmarkRef}
     />
   );
 };

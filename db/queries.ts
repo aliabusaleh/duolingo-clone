@@ -7,8 +7,15 @@ import { getAuth } from "@/lib/auth";
 import { JUZ_COUNT, juzBounds } from "@/lib/juz";
 import { getLocale } from "@/lib/locale";
 import { courseInMode } from "@/lib/mode";
-import { getLastUnitId, getMode, getToday } from "@/lib/preferences";
+import {
+  getLastAyah,
+  getLastRead,
+  getLastUnitId,
+  getMode,
+  getToday,
+} from "@/lib/preferences";
 import { computeProgress, firstOpenLesson } from "@/lib/progress";
+import { type ReadingMarks } from "@/lib/reading";
 import { REVIEW_SIZE as DAILY_REVIEW_SIZE } from "@/lib/review";
 import { lessonSticker, stickerAlbum } from "@/lib/stickers";
 
@@ -19,6 +26,7 @@ import {
   courses,
   lessons,
   mistakes,
+  readingMarks,
   reviewItems,
   sourceTexts,
   surahs,
@@ -502,6 +510,28 @@ export const getTopTenUsers = cache(async () => {
   });
 
   return data;
+});
+
+// Read mode: where the learner is reading, and their bookmark. The account's
+// row comes first (it follows them across devices); this device's cookies
+// fill in what it doesn't have, e.g. a place read while offline.
+export const getReadingMarks = cache(async (): Promise<ReadingMarks> => {
+  const { userId } = await getAuth();
+  const [row, lastAyah, lastPath] = await Promise.all([
+    userId
+      ? db.query.readingMarks.findFirst({
+          where: eq(readingMarks.userId, userId),
+        })
+      : undefined,
+    getLastAyah(),
+    getLastRead(),
+  ]);
+
+  return {
+    lastRef: row?.lastRef ?? lastAyah,
+    lastPath: row?.lastRef ? row.lastPath : lastPath,
+    bookmarkRef: row?.bookmarkRef ?? null,
+  };
 });
 
 // Read mode: the 114 surahs, in mushaf order.

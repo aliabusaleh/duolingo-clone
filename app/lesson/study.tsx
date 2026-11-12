@@ -179,8 +179,9 @@ export const Study = ({
                 >
                   {body}
                   {number !== null && (
-                    <span className="ms-1 text-gold-600">
-                      ﴿{formatNumber("ar", number)}﴾
+                    // The mushaf font draws the number as its ayah marker.
+                    <span className="ms-1 font-quran text-gold-600">
+                      {formatNumber("ar", number)}
                     </span>
                   )}
                 </p>

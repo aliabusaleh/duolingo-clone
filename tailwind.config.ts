@@ -21,7 +21,8 @@ const config = {
     extend: {
       fontFamily: {
         sans: ["var(--font-nunito)", "var(--font-arabic)", "sans-serif"],
-        quran: ["var(--font-quran)", "serif"],
+        // The mushaf font (app/globals.css), then Amiri Quran while it loads.
+        quran: ['"KFGQPC Hafs"', "var(--font-quran)", "serif"],
         arabic: ["var(--font-arabic)", "serif"],
         kufi: ["var(--font-kufi)", "var(--font-arabic)", "sans-serif"],
       },

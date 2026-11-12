@@ -24,6 +24,10 @@ export const LAST_JUZ_COOKIE = "last_juz";
 // "juz/30"), so the read page can offer to continue from there.
 export const LAST_READ_COOKIE = "last_read";
 
+// Read mode: the ayah last read on this device ("2:255"). The account's
+// reading_marks row comes first; this keeps the place while offline.
+export const LAST_AYAH_COOKIE = "last_ayah";
+
 // Read questions and options aloud: "1" on, "0" off. Unset: on in kids mode.
 export const READ_ALOUD_COOKIE = "read_aloud";
 

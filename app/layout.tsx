@@ -22,6 +22,7 @@ import { APP_NAME, features, siteConfig } from "@/config";
 import { dir, messages } from "@/lib/i18n";
 import { getLocale } from "@/lib/locale";
 import { getMode, getRepeat, isReadAloudOn } from "@/lib/preferences";
+import { QURAN_FONT_ORIGIN } from "@/lib/quran-font";
 import { AUDIO_ORIGINS } from "@/lib/recitation";
 import { cn } from "@/lib/utils";
 
@@ -67,6 +68,8 @@ export default async function RootLayout({
   // Open the connections to the recitation hosts early: the first ayah
   // then plays without waiting for DNS and TLS.
   for (const origin of AUDIO_ORIGINS) preconnect(origin);
+  // The mushaf font's host, so the Quran text switches to it quickly.
+  preconnect(QURAN_FONT_ORIGIN, { crossOrigin: "anonymous" });
 
   const [locale, mode, readAloud, repeat] = await Promise.all([
     getLocale(),

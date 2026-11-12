@@ -1,6 +1,6 @@
 import { notFound } from "next/navigation";
 
-import { getPassage, getSurahs } from "@/db/queries";
+import { getPassage, getReadingMarks, getSurahs } from "@/db/queries";
 import { getLocale } from "@/lib/locale";
 
 import { Reader } from "../../reader";
@@ -11,10 +11,11 @@ type SurahReadPageProps = {
 
 const SurahReadPage = async ({ params }: SurahReadPageProps) => {
   const number = Number((await params).number);
-  const [passage, surahs, locale] = await Promise.all([
+  const [passage, surahs, locale, marks] = await Promise.all([
     getPassage("surah", number),
     getSurahs(),
     getLocale(),
+    getReadingMarks(),
   ]);
   if (!passage) notFound();
 
@@ -34,6 +35,7 @@ const SurahReadPage = async ({ params }: SurahReadPageProps) => {
       path={`surah/${number}`}
       previous={link(number - 1)}
       next={link(number + 1)}
+      bookmark={marks.bookmarkRef}
     />
   );
 };

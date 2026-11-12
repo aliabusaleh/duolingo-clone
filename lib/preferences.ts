@@ -1,9 +1,11 @@
 import { cookies } from "next/headers";
 
 import { localDate } from "@/lib/day";
+import { isAyahRef } from "@/lib/reading";
 
 import {
   DEFAULT_MODE,
+  LAST_AYAH_COOKIE,
   LAST_JUZ_COOKIE,
   LAST_READ_COOKIE,
   LAST_UNIT_COOKIE,
@@ -43,6 +45,12 @@ export const getLastUnitId = async () => {
 export const getLastRead = async () => {
   const value = (await cookies()).get(LAST_READ_COOKIE)?.value ?? "";
   return /^(surah|juz)\/\d+$/.test(value) ? value : null;
+};
+
+/** Read mode: the ayah last read on this device, e.g. "2:255". */
+export const getLastAyah = async () => {
+  const value = (await cookies()).get(LAST_AYAH_COOKIE)?.value;
+  return isAyahRef(value) ? value : null;
 };
 
 /** The juz' last shown on the learn page on this device, if any. */

@@ -8,6 +8,8 @@
 //
 // Nothing here runs, and nothing is saved, until a button is pressed.
 
+import { QURAN_FONT_URL } from "@/lib/quran-font";
+
 export type OfflinePack = "lessons" | "quran";
 
 /** Kept in step with public/sw.js. */
@@ -161,6 +163,10 @@ const savePack = async ({
     const body = await save(font).catch(() => null);
     step(body?.size ?? 0);
   });
+
+  // The mushaf font comes from the Quran Foundation's CDN (CORS allowed).
+  progress.total += 1;
+  step((await save(QURAN_FONT_URL).catch(() => null))?.size ?? 0);
 
   // Recitation hosts allow it (CORS), so its size can be counted.
   await eachLimited(audio, async (url) => {

@@ -3,24 +3,31 @@
 Lessons are generated from primary texts by `npm run content:import`
 (`scripts/import-content.ts`). Add `-- --refresh` to re-download.
 
-| Course                           | Source                                                                                                | Citation shown                                                                       |
-| -------------------------------- | ----------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------ |
-| Kids: Short Surahs               | Same Quran source; Al-Fatiha and An-Nas to Al-Fil                                                     | `Quran s:n`, links to quran.com                                                      |
-| The Whole Quran                  | Same Quran source; all 114 surahs, a lesson per 5 ayat                                                | `Quran s:n`, links to quran.com                                                      |
-| Quran: Al-Fatiha                 | [alquran.cloud](https://alquran.cloud/api): Uthmani text (Tanzil), Sahih International, Alafasy audio | `Quran 1:n`, links to quran.com                                                      |
-| Hadith: an-Nawawi's Forty (1–10) | [fawazahmed0/hadith-api](https://github.com/fawazahmed0/hadith-api)                                   | `an-Nawawi's Forty Hadith #n` + takhrij (e.g. Bukhari & Muslim), links to sunnah.com |
-| Adhkar: Morning & Evening        | [hisnmuslim.com API](https://www.hisnmuslim.com), Hisn al-Muslim ch. 27                               | `Hisn al-Muslim #id`, links to hisnmuslim.com                                        |
+| Course                           | Source                                                                                                                                                         | Citation shown                                                                       |
+| -------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------ |
+| Kids: Short Surahs               | Same Quran source; Al-Fatiha and An-Nas to Al-Fil                                                                                                              | `Quran s:n`, links to quran.com                                                      |
+| The Whole Quran                  | Same Quran source; all 114 surahs, a lesson per 5 ayat                                                                                                         | `Quran s:n`, links to quran.com                                                      |
+| Quran: Al-Fatiha                 | QPC Hafs text ([Quran.com API](https://api-docs.quran.com)); names, juz', meaning (Sahih International), audio from [alquran.cloud](https://alquran.cloud/api) | `Quran 1:n`, links to quran.com                                                      |
+| Hadith: an-Nawawi's Forty (1–10) | [fawazahmed0/hadith-api](https://github.com/fawazahmed0/hadith-api)                                                                                            | `an-Nawawi's Forty Hadith #n` + takhrij (e.g. Bukhari & Muslim), links to sunnah.com |
+| Adhkar: Morning & Evening        | [hisnmuslim.com API](https://www.hisnmuslim.com), Hisn al-Muslim ch. 27                                                                                        | `Hisn al-Muslim #id`, links to hisnmuslim.com                                        |
 
 The import always loads the **full Quran** (114 surahs, 6,236 ayat) into
 `source_texts` (keys `quran:<surah>:<ayah>`) and the `surahs` table, so any
-course can use any ayah. The text is the Quran's **rasm**: Tanzil's Uthmani
-script, spelled as in the mushaf (e.g. "عُمْىٌ", "وَبِٱلْءَاخِرَةِ"), everywhere,
-kids included. It is shown in Amiri Quran (`font-quran`), a font made for
-this text; other Arabic stays in Noto Naskh. Typed answers accept the
-everyday spelling too (`lib/arabic.ts`). Quran.com's word-by-word audio is
-numbered by these same Uthmani words, so every word has its audio. The
-basmalah the edition puts before the first ayah of each surah is removed (it
-is only an ayah in Al-Fatiha).
+course can use any ayah. The text is the King Fahd Complex's **QPC Hafs**
+text, as the Madinah mushaf prints it (e.g. "إِبۡرَٰهِـۧمَ", "ٱلۡحَيُّ"),
+everywhere, kids included. It is shown in the Complex's own font, KFGQPC
+Uthmanic Script HAFS (`font-quran`, `lib/quran-font.ts`), loaded from the
+Quran Foundation's CDN and never copied into this repo; the font draws the
+mushaf's marks and its ayah markers. Other Arabic stays in Noto Naskh. Typed
+answers accept the everyday spelling too (`lib/arabic.ts`). Quran.com's
+word-by-word audio is numbered by these same words, so every word has its
+audio. The ayah number QPC puts at the end of each ayah is removed (the app
+draws its own marker).
+
+**Permission:** the King Fahd Complex's written permission is needed before
+this text and font are used in a deployed app (the font's licence forbids
+reproducing it, and the Quran Foundation's terms limit storing their text).
+The app credits the Complex and the Quran Foundation on the Read page.
 
 ## Exercise types
 
