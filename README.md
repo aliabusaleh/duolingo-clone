@@ -1,49 +1,153 @@
 <a name="readme-top"></a>
 
-# Lingo - Interactive platform for language learning.
+<div align="center">
 
-![Lingo - Interactive platform for language learning.](/.github/images/img_main.png "Lingo - Interactive platform for language learning.")
+# فقيه · Faqih
 
-[![Ask Me Anything!](https://flat.badgen.net/static/Ask%20me/anything?icon=github&color=black&scale=1.01)](https://github.com/sanidhyy "Ask Me Anything!")
-[![GitHub license](https://flat.badgen.net/github/license/sanidhyy/duolingo-clone?icon=github&color=black&scale=1.01)](https://github.com/sanidhyy/duolingo-clone/blob/main/LICENSE "GitHub license")
-[![Maintenance](https://flat.badgen.net/static/Maintained/yes?icon=github&color=black&scale=1.01)](https://github.com/sanidhyy/duolingo-clone/commits/main "Maintenance")
-[![GitHub branches](https://flat.badgen.net/github/branches/sanidhyy/duolingo-clone?icon=github&color=black&scale=1.01)](https://github.com/sanidhyy/duolingo-clone/branches "GitHub branches")
-[![Github commits](https://flat.badgen.net/github/commits/sanidhyy/duolingo-clone?icon=github&color=black&scale=1.01)](https://github.com/sanidhyy/duolingo-clone/commits "Github commits")
-[![GitHub issues](https://flat.badgen.net/github/issues/sanidhyy/duolingo-clone?icon=github&color=black&scale=1.01)](https://github.com/sanidhyy/duolingo-clone/issues "GitHub issues")
-[![GitHub pull requests](https://flat.badgen.net/github/prs/sanidhyy/duolingo-clone?icon=github&color=black&scale=1.01)](https://github.com/sanidhyy/duolingo-clone/pulls "GitHub pull requests")
-[![Vercel status](https://img.shields.io/badge/Vercel-000000?style=for-the-badge&logo=vercel&logoColor=white)](https://lingo-clone.vercel.app/ "Vercel status")
+### Learn the Quran, a few minutes a day
 
-<!-- Table of Contents -->
-<details>
+A free, Arabic-first app for memorising and understanding the Quran, with short daily lessons, real recitation and a source behind every question. Built as _sadaqah jariyah_.
 
-<summary>
+**[Open the app](https://faqih-beige.vercel.app)** · [Roadmap](docs/ROADMAP.md) · [Setup](docs/SETUP.md) · [Content rules](content/README.md) · [Project board](https://github.com/users/aliabusaleh/projects/1)
 
-# :notebook_with_decorative_cover: Table of Contents
+_﴿ وَلَقَدْ يَسَّرْنَا الْقُرْآنَ لِلذِّكْرِ فَهَلْ مِن مُّدَّكِرٍ ﴾_
+"And We have certainly made the Quran easy to remember. So is there anyone who will be mindful?" (Al-Qamar 54:17)
 
-</summary>
+</div>
 
-- [Folder Structure](#bangbang-folder-structure)
-- [Getting Started](#toolbox-getting-started)
-- [Screenshots](#camera-screenshots)
-- [Tech Stack](#gear-tech-stack)
-- [Stats](#wrench-stats)
-- [Contribute](#raised_hands-contribute)
-- [Acknowledgements](#gem-acknowledgements)
-- [Buy Me a Coffee](#coffee-buy-me-a-coffee)
-- [Follow Me](#rocket-follow-me)
-- [Learn More](#books-learn-more)
-- [Deploy on Vercel](#page_with_curl-deploy-on-vercel)
-- [Give A Star](#star-give-a-star)
-- [Star History](#star2-star-history)
-- [Give A Star](#star-give-a-star)
+---
 
-</details>
+## What Faqih is
 
-## :bangbang: Folder Structure
+Faqih (فقيه, "one who has deep understanding") turns the Quran into short, game-like lessons in the style of Duolingo. Learners **read and listen first**, then answer questions on what they just read. Every question is built from the real text, and every wrong answer is another real ayah: **the Quran is never altered**.
 
-Here is the folder structure of this app.
+It is made for:
+
+| Learner                    | What they get                                                                                                                                       |
+| -------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------- |
+| 🧒 **Children**            | A gentle kids mode: the short surahs, big buttons, no hearts or penalties, and everything read aloud by a qari.                                     |
+| 🧑 **Adults**              | The whole Quran, all 114 surahs, in short lessons grouped by hizb, with exams per surah and per juz', and a daily review of what they memorised.    |
+| 🕌 **Arabic speakers**     | An Arabic, right-to-left interface by default, the Quran exactly as the Madinah mushaf prints it, and lenient typed answers (no diacritics needed). |
+| 🌍 **Non-Arabic speakers** | An English interface one tap away, with the meaning of each ayah shown under the Arabic.                                                            |
+
+## Features
+
+**Learning**
+
+- **Courses:** the Whole Quran (114 units), Kids: Short Surahs, Al-Fatiha, an-Nawawi's Forty Hadith (1–10), and the morning and evening adhkar from Hisn al-Muslim.
+- **Read first, then answer:** each lesson opens with a few ayat to read and hear, then questions on them.
+- **Exercises:**
+  - what comes next
+  - complete the ayah or the word
+  - put the words or the ayat in order
+  - match pairs
+  - listen and pick the ayah
+  - true or false
+  - typed answers
+- **Exams** close every surah and every juz'. Passing an exam opens what comes next, and surahs can be taken in any order.
+- **Daily review and streak:** a few questions a day on ayat already learned, spaced out over time.
+- **Read mode:** read and listen to the whole Quran, by surah or by juz', like a mushaf. It remembers the exact ayah you stopped at (on your account, across devices), lets you bookmark an ayah, and shows its tafsir on long-press (al-Muyassar in Arabic, Ibn Kathir in English).
+- **The mushaf's own script:** the King Fahd Complex's Hafs text in its KFGQPC font, with the mushaf's marks and ayah markers.
+
+**Gentle motivation**
+
+- Hearts are earned back by reviewing mistakes, never by waiting or paying.
+- Kids mode hides points, hearts and rankings.
+- Learning modes, a leaderboard, and inviting friends.
+- **Daily wird reminder:** a push notification at a time each learner chooses, opening today's lesson.
+
+**Access**
+
+- **Languages:** Arabic (RTL, the default) or English. Each course is built in one language, so no question mixes the two.
+- **Phones first:** a bottom tab bar on phones, with Courses one tap away everywhere.
+- **Installable** to the Home Screen.
+- **Optional offline use:** download the next lessons, or the whole Quran for Read mode, at the press of a button.
+
+**Authentic and reviewed**
+
+- Every question shows its source (surah:ayah, or the hadith reference and who recorded it), with a link.
+- Every lesson is a **draft** until a qualified reviewer approves it. Drafts are hidden in production.
+- **Recitation:** only from a qari, never a synthetic voice. Al-Husary _muallim_ for kids, Alafasy otherwise.
+- **Free:** no paywall on learning. Payments are switched off.
+
+## Content sources
+
+| Content                              | Source                                                                                                                                                                      |
+| ------------------------------------ | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Quran text and font                  | King Fahd Glorious Quran Printing Complex: QPC Hafs text and KFGQPC Uthmanic Script HAFS font, via the [Quran Foundation](https://quran.foundation) (Quran.com API and CDN) |
+| Surah names, translation, recitation | [alquran.cloud](https://alquran.cloud/api) (Sahih International), recitations by Alafasy and al-Husary                                                                      |
+| Tafsir                               | at-Tafsir al-Muyassar ([alquran.cloud](https://alquran.cloud/api)), Ibn Kathir abridged ([Quran.com](https://quran.com))                                                    |
+| an-Nawawi's Forty Hadith             | [fawazahmed0/hadith-api](https://github.com/fawazahmed0/hadith-api), links to sunnah.com                                                                                    |
+| Morning and evening adhkar           | [Hisn al-Muslim](https://www.hisnmuslim.com) (al-Qahtani), chapter 27                                                                                                       |
+
+Lessons are generated from these texts by `bun run content:import`. The rules (sources, review status, no altered text) are in [content/README.md](content/README.md). Translation and audio licensing must be cleared before a public launch.
+
+## Getting started
+
+**Requirements:**
+
+- Node.js 20.9 or newer.
+- [Bun](https://bun.sh) 1.3.4 (pinned in `package.json`).
+- A PostgreSQL database, e.g. [Neon](https://neon.tech) (free tier).
+
+1. Install the exact versions from `bun.lock`. Don't use `npm install`.
+
+   ```bash
+   bun install --frozen-lockfile
+   ```
+
+   Without Bun installed: `npx bun@1.3.4 install --frozen-lockfile`.
+
+2. Copy `.env.example` to `.env` and set at least `DATABASE_URL`. For local development without Clerk, set `NEXT_PUBLIC_DEV_AUTH=local`: you're signed in automatically as a dev user.
+
+3. Create the tables, import the content and start the app:
+
+   ```bash
+   bun run db:push
+   bun run content:import
+   bun run dev
+   ```
+
+   Then open http://localhost:3000.
+
+**Optional settings:**
+
+- Clerk keys for real sign-in.
+- `NEXT_PUBLIC_DEFAULT_LOCALE` (`ar` or `en`).
+- `NEXT_PUBLIC_SHOW_DRAFTS`.
+- The push keys and `CRON_SECRET` for reminders.
+
+Every variable is explained in `.env.example`, and [docs/SETUP.md](docs/SETUP.md) covers deployment.
+
+### Useful scripts
+
+| Script                            | What it does                                                                    |
+| --------------------------------- | ------------------------------------------------------------------------------- |
+| `bun run dev`                     | Start the app locally                                                           |
+| `bun run build`                   | Production build                                                                |
+| `bun run lint` / `bun run format` | ESLint and Prettier checks                                                      |
+| `bun run db:push`                 | Apply `db/schema.ts` to the database                                            |
+| `bun run db:studio`               | Browse the database                                                             |
+| `bun run content:import`          | Download the sources and rebuild the courses (`-- --refresh` to download again) |
+
+### Automation (GitHub Actions)
+
+| Workflow                | What it does                                                                                         |
+| ----------------------- | ---------------------------------------------------------------------------------------------------- |
+| Update database schema  | Applies schema changes to the database when they reach `main` (safe changes only)                    |
+| Update lessons          | Rebuilds the lessons when content code changes, keeping learners' progress                           |
+| Daily wird reminders    | Sends the reminders that are due                                                                     |
+| Sync project board info | Updates the [project board](https://github.com/users/aliabusaleh/projects/1) from `.github/project/` |
+| Update README           | Refreshes the folder structure and dependency lists below                                            |
+
+## Tech stack
+
+Next.js 16 (App Router) · React 19 · TypeScript · Tailwind CSS · Drizzle ORM · Neon Postgres · Clerk · Zustand · web-push · Bun. Hosted on Vercel.
+
+## Folder structure
 
 <!--- FOLDER_STRUCTURE_START --->
+
 ```bash
 faqih/
   |- actions/
@@ -137,132 +241,30 @@ faqih/
   |- tsconfig.json
   |- vercel.ts
 ```
+
 <!--- FOLDER_STRUCTURE_END --->
 
-<br />
+## Contributing
 
-## :toolbox: Getting Started
+Faqih is built by volunteers, and help is welcome:
 
-1. Make sure **Git** and **NodeJS** is installed.
-2. Clone this repository to your local computer.
-3. Create `.env` file in **root** directory.
-4. Contents of `.env`:
+- **Developers:** pick a card from **Ready** on the [project board](https://github.com/users/aliabusaleh/projects/1), and link your pull request to it. Check Arabic (RTL) and English, phone and desktop, and kids and full mode. Run `bun run lint` before opening a PR.
+- **Content contributors:** follow [content/README.md](content/README.md). Every item needs a source.
+- **Scholars and teachers:** content goes live only after your review. Watch the **📿 Scholarly review** column.
+- **Found a mistake in a lesson?** [Open an issue](https://github.com/aliabusaleh/faqih/issues) with the lesson, the problem and the correct source.
 
-```env
-# .env
+The principles every change follows (Islamic first, free knowledge, authentic and reviewed, the Quran never altered, gentle motivation) are on the [project board](https://github.com/users/aliabusaleh/projects/1).
 
-# disabled next.js telemetry
-NEXT_TELEMETRY_DISABLED=1
+## Acknowledgements
 
-# clerk auth keys
-NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY=pk_test_XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
-CLERK_SECRET_KEY=sk_test_XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
+- Faqih started as a fork of [Lingo](https://github.com/sanidhyy/duolingo-clone) by Sanidhya Kumar Verma (MIT licence), built on [Code with Antonio](https://codewithantonio.com/)'s course.
+- The Quran text and its font are by the King Fahd Glorious Quran Printing Complex, served by the [Quran Foundation](https://quran.foundation); surah data and translations are from [alquran.cloud](https://alquran.cloud), the hadith from [fawazahmed0/hadith-api](https://github.com/fawazahmed0/hadith-api), and the adhkar from [Hisn al-Muslim](https://www.hisnmuslim.com).
+- Sound effects: [Kenney](https://kenney.nl/) and [Freesound](https://freesound.org/).
 
-# neon db uri
-DATABASE_URL="postgresql://<user>:<password>@<host>:<post>/lingo?sslmode=require"
+### Dependencies
 
-# stripe api key and webhook
-STRIPE_API_SECRET_KEY=sk_test_XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
-STRIPE_WEBHOOK_SECRET=whsec_XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
-
-# public app url
-NEXT_PUBLIC_APP_URL=http://localhost:3000
-
-# clerk admin user id(s) separated by comma and space (, )
-CLERK_ADMIN_IDS="user_xxxxxxxxxxxxxxxxxxxxxxxxxxxxx"
-# or CLERK_ADMIN_IDS="user_xxxxxxxxxxxxxxxxxxxxxxxxxxxxx, user_xxxxxxxxxxxxxxxxxxxxxx" for multiple admins.
-
-```
-
-5. Obtain Clerk Authentication Keys
-   1. **Source**: Clerk Dashboard or Settings Page
-   2. **Procedure**:
-      - Log in to your Clerk account.
-      - Navigate to the dashboard or settings page.
-      - Look for the section related to authentication keys.
-      - Copy the `NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY` and `CLERK_SECRET_KEY` provided in that section.
-
-6. Retrieve Neon Database URI
-   1. **Source**: Database Provider (e.g., Neon, PostgreSQL)
-   2. **Procedure**:
-      - Access your database provider's platform or configuration.
-      - Locate the database connection details.
-      - Replace `<user>`, `<password>`, `<host>`, and `<port>` placeholders in the URI with your actual database credentials.
-      - Ensure to include `?sslmode=require` at the end of the URI for SSL mode requirement.
-
-7. Fetch Stripe API Key and Webhook Secret
-   1. **Source**: Stripe Dashboard
-   2. **Procedure**:
-      - Log in to your Stripe account.
-      - Navigate to the dashboard or API settings.
-      - Find the section related to API keys and webhook secrets.
-      - Copy the `STRIPE_API_SECRET_KEY` and `STRIPE_WEBHOOK_SECRET`.
-
-8. Specify Public App URL
-   1. **Procedure**:
-      - Replace `http://localhost:3000` with the URL of your deployed application.
-
-9. Identify Clerk Admin User IDs
-   1. **Source**: Clerk Dashboard or Settings Page
-   2. **Procedure**:
-      - Log in to your Clerk account.
-      - Navigate to the dashboard or settings page.
-      - Find the section related to admin user IDs.
-      - Copy the user IDs provided, ensuring they are separated by commas and spaces.
-
-10. Save and Secure:
-    - Save the changes to the `.env` file.
-
-11. Install Project Dependencies using `bun install --legacy-peer-deps`.
-
-12. Run the Seed Script:
-
-In the same terminal, run the following command to execute the seed script:
-
-```bash
-bun run db:push && bun run db:prod
-```
-
-This command uses `bun` to execute the Typescript file (`scripts/prod.ts`) and writes challenges data in database.
-
-13. Verify Data in Database:
-
-Once the script completes, check your database to ensure that the challenges data has been successfully seeded.
-
-14. Now app is fully configured 👍 and you can start using this app using either one of `bun dev`.
-
-**NOTE:** Please make sure to keep your API keys and configuration values secure and do not expose them publicly.
-
-## :camera: Screenshots
-
-![Modern UI/UX](/.github/images/img1.png "Modern UI/UX")
-
-![Quests](/.github/images/img2.png "Quests")
-
-![Shop](/.github/images/img3.png "Shop")
-
-## :gear: Tech Stack
-
-[![React JS](https://skillicons.dev/icons?i=react "React JS")](https://react.dev/ "React JS") [![Next JS](https://skillicons.dev/icons?i=next "Next JS")](https://nextjs.org/ "Next JS") [![Typescript](https://skillicons.dev/icons?i=ts "Typescript")](https://www.typescriptlang.org/ "Typescript") [![Tailwind CSS](https://skillicons.dev/icons?i=tailwind "Tailwind CSS")](https://tailwindcss.com/ "Tailwind CSS") [![Vercel](https://skillicons.dev/icons?i=vercel "Vercel")](https://vercel.app/ "Vercel") [![Postgresql](https://skillicons.dev/icons?i=postgres "Postgresql")](https://www.postgresql.org/ "Postgresql")
-
-## :wrench: Stats
-
-[![Stats for Lingo](/.github/images/stats.svg "Stats for Lingo")](https://pagespeed.web.dev/analysis?url=https://lingo-clone.vercel.app/ "Stats for Lingo")
-
-## :raised_hands: Contribute
-
-You might encounter some bugs while using this app. You are more than welcome to contribute. Just submit changes via pull request and I will review them before merging. Make sure you follow community guidelines.
-
-## :gem: Acknowledgements
-
-Useful resources and dependencies that are used in Lingo.
-
-- Special Thanks to Code with Antonio: https://codewithantonio.com/
-- Kenney Assets: https://kenney.nl/
-- Freesound: https://freesound.org/
-- Elevenlabs AI: https://elevenlabs.io/
-- Flagpack: https://flagpack.xyz/
 <!--- DEPENDENCIES_START --->
+
 - [@clerk/localizations](https://www.npmjs.com/package/@clerk/localizations): 4.5.6
 - [@clerk/nextjs](https://www.npmjs.com/package/@clerk/nextjs): ^7.2.8
 - [@eslint/eslintrc](https://www.npmjs.com/package/@eslint/eslintrc): ^3
@@ -311,43 +313,15 @@ Useful resources and dependencies that are used in Lingo.
 
 <!--- DEPENDENCIES_END --->
 
-## :coffee: Buy Me a Coffee
+## Licence
 
-[<img src="https://img.shields.io/badge/Buy_Me_A_Coffee-FFDD00?style=for-the-badge&logo=buy-me-a-coffee&logoColor=black" width="200" />](https://www.buymeacoffee.com/sanidhy "Buy me a Coffee")
+MIT. See [LICENSE](LICENSE). The original Lingo code is © 2024 Sanidhya Kumar Verma. Content sources keep their own licences (see [content/README.md](content/README.md)).
 
-## :rocket: Follow Me
+<div align="center">
 
-[![Follow Me](https://img.shields.io/github/followers/sanidhyy?style=social&label=Follow&maxAge=2592000)](https://github.com/sanidhyy "Follow Me")
-[![Tweet about this project](https://img.shields.io/twitter/url?style=social&url=https%3A%2F%2Fx.com%2F_sanidhyy)](https://x.com/intent/tweet?text=Check+out+this+amazing+app:&url=https%3A%2F%2Fgithub.com%2Fsanidhyy%2Fduolingo-clone "Tweet about this project")
+_جزاكم الله خيرا for helping people learn the Book of Allah._
+**اللهم اجعل القرآن ربيع قلوبنا**
 
-## :books: Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
-
-## :page_with_curl: Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
-
-## :star: Give A Star
-
-You can also give this repository a star to show more people and they can use this repository.
-
-## :star2: Star History
-
-<a href="https://star-history.com/#sanidhyy/duolingo-clone&Timeline">
-<picture>
-  <source media="(prefers-color-scheme: dark)" srcset="https://api.star-history.com/svg?repos=sanidhyy/duolingo-clone&type=Timeline&theme=dark" />
-  <source media="(prefers-color-scheme: light)" srcset="https://api.star-history.com/svg?repos=sanidhyy/duolingo-clone&type=Timeline" />
-  <img alt="Star History Chart" src="https://api.star-history.com/svg?repos=sanidhyy/duolingo-clone&type=Timeline" />
-</picture>
-</a>
-
-<br />
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
+
+</div>
