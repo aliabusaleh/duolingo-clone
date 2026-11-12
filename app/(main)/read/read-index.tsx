@@ -2,16 +2,17 @@
 
 import { useMemo, useState } from "react";
 
-import { BookOpen, Search } from "lucide-react";
+import { BookOpen, Bookmark, Search } from "lucide-react";
 import Link from "next/link";
 
 import { useLocale, useMessages } from "@/components/locale-provider";
 import { normalizeArabic } from "@/lib/arabic";
 import { formatNumber } from "@/lib/i18n";
+import { type ReadingMarks, ayahHref, parseAyahRef } from "@/lib/reading";
 import { cn } from "@/lib/utils";
 
 type ReadIndexProps = {
-  lastRead: string | null;
+  marks: ReadingMarks;
   surahs: {
     number: number;
     name: string;
@@ -28,13 +29,26 @@ type ReadIndexProps = {
 
 type Tab = "surahs" | "ajza";
 
-export const ReadIndex = ({ lastRead, surahs, ajza }: ReadIndexProps) => {
+export const ReadIndex = ({ marks, surahs, ajza }: ReadIndexProps) => {
   const t = useMessages();
   const locale = useLocale();
   const ar = locale === "ar";
+  const lastRead = marks.lastPath;
   const [tab, setTab] = useState<Tab>(
     lastRead?.startsWith("juz/") ? "ajza" : "surahs"
   );
+
+  // "Al-Baqarah · ayah 255" for a saved place.
+  const placeLabel = (ref: string) => {
+    const { surah, ayah } = parseAyahRef(ref);
+    const s = surahs.find((x) => x.number === surah);
+    return s
+      ? t.read.ayahPlace(
+          ar ? s.name : s.englishName,
+          formatNumber(locale, ayah)
+        )
+      : null;
+  };
   const [query, setQuery] = useState("");
 
   const results = useMemo(() => {
@@ -77,13 +91,42 @@ export const ReadIndex = ({ lastRead, surahs, ajza }: ReadIndexProps) => {
         </p>
       )}
 
-      {lastRead && continueLabel && (
+      {/* Continue at the exact ayah if it is known, else at the page. */}
+      {marks.lastRef && placeLabel(marks.lastRef) ? (
         <Link
-          href={`/read/${lastRead}`}
+          href={ayahHref(marks.lastRef, marks.lastPath)}
           className="flex items-center justify-between rounded-xl border-2 border-b-4 border-brand-300 bg-brand-50 px-4 py-3 font-bold text-brand-700 hover:bg-brand-100"
         >
           <span>{t.read.continue}</span>
-          <span className={cn(ar && "font-arabic")}>{continueLabel}</span>
+          <span className={cn(ar && "font-arabic")}>
+            {placeLabel(marks.lastRef)}
+          </span>
+        </Link>
+      ) : (
+        lastRead &&
+        continueLabel && (
+          <Link
+            href={`/read/${lastRead}`}
+            className="flex items-center justify-between rounded-xl border-2 border-b-4 border-brand-300 bg-brand-50 px-4 py-3 font-bold text-brand-700 hover:bg-brand-100"
+          >
+            <span>{t.read.continue}</span>
+            <span className={cn(ar && "font-arabic")}>{continueLabel}</span>
+          </Link>
+        )
+      )}
+
+      {marks.bookmarkRef && placeLabel(marks.bookmarkRef) && (
+        <Link
+          href={ayahHref(marks.bookmarkRef)}
+          className="flex items-center justify-between rounded-xl border-2 border-b-4 border-gold-400 bg-gold-50 px-4 py-3 font-bold text-gold-700 hover:bg-gold-100"
+        >
+          <span className="flex items-center gap-x-2">
+            <Bookmark className="h-5 w-5 fill-gold-500 text-gold-600" />
+            {t.read.yourBookmark}
+          </span>
+          <span className={cn(ar && "font-arabic")}>
+            {placeLabel(marks.bookmarkRef)}
+          </span>
         </Link>
       )}
 

@@ -276,6 +276,18 @@ export const userProgress = pgTable("user_progress", {
   lastActiveOn: date("last_active_on"), // "YYYY-MM-DD", local date
 });
 
+// Read mode: where each learner is in the Quran. lastRef is saved by itself
+// as they read (the ayah at the top of the screen); bookmarkRef is one they
+// set by hand. Refs are "surah:ayah", e.g. "2:255".
+export const readingMarks = pgTable("reading_marks", {
+  userId: text("user_id").primaryKey(),
+  lastRef: text("last_ref"),
+  lastPath: text("last_path"), // the page it was read on: "surah/2" or "juz/3"
+  lastAt: timestamp("last_at"),
+  bookmarkRef: text("bookmark_ref"),
+  bookmarkAt: timestamp("bookmark_at"),
+});
+
 export const userProgressRelations = relations(userProgress, ({ one }) => ({
   activeCourse: one(courses, {
     fields: [userProgress.activeCourseId],
