@@ -220,6 +220,10 @@ export const ReadIndex = ({ marks, surahs, ajza }: ReadIndexProps) => {
           ))}
         </ul>
       )}
+
+      <p className="text-center text-xs text-neutral-400">
+        {t.read.fontCredit}
+      </p>
     </div>
   );
 };

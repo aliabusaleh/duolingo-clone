@@ -52,14 +52,21 @@ const clean = (s: string) => s.replace(/^﻿/, "").trim();
 
 const arNum = (n: number) => n.toLocaleString("ar-EG");
 
-/* ---------- Quran: api.alquran.cloud (Tanzil Uthmani text) ---------- */
+/* ---------- Quran: QPC Hafs text, with alquran.cloud for the rest ---------- */
 
-// Faqih shows the Quran in its rasm, the Uthmani spelling of the mushaf
-// (Tanzil's Uthmani text), e.g. "عُمْىٌ" and "وَبِٱلْءَاخِرَةِ", not the everyday
-// (imla'i) spelling "عُمْيٌ", "وَبِالْآخِرَةِ". It is shown in Amiri Quran, a font
-// made for this text (font-quran). Typed answers still accept the everyday
-// spelling (lib/arabic.ts). Quran.com's word-by-word audio is numbered by
-// these same Uthmani words (scripts/content/recitations.ts).
+// Faqih shows the Quran as the Madinah mushaf prints it: the King Fahd
+// Complex's Hafs text (QPC Hafs, from the Quran.com API), drawn in the
+// Complex's own font, KFGQPC Uthmanic Script HAFS (font-quran; loaded from
+// the Quran Foundation's CDN, see app/globals.css). The text and the font are
+// made for each other: the font draws the mushaf's marks (sukun "ۡ", small
+// letters such as in "إِبۡرَٰهِـۧمَ") and its ayah markers. Typed answers still
+// accept the everyday spelling (lib/arabic.ts). Quran.com's word-by-word audio
+// is numbered by these same words (scripts/content/recitations.ts).
+// alquran.cloud still gives the surahs' names, juz' and hizb, the English
+// meaning and the audio.
+//
+// The King Fahd Complex's permission is needed before this text is stored in
+// a deployed database (see docs/SETUP.md).
 
 export const SURAH_COUNT = 114;
 export const AYAH_COUNT = 6236;
@@ -101,10 +108,35 @@ const stripBasmalah = (surah: number, text: string, basmalah: string) => {
   return prefixed ? w.slice(b.length).join(" ") : text;
 };
 
+type QpcHafs = { verses: { verse_key: string; text_qpc_hafs: string }[] };
+
+// QPC Hafs ends every ayah with its number (" ١", drawn by the font as the
+// ayah marker) and puts a no-break space before it and after a hizb mark
+// (۞). The number is shown by the app itself, and plain spaces keep word
+// splitting as before.
+const qpcText = (text: string) =>
+  text
+    .replace(/[s ]*[٠-٩]+$/, "")
+    .replace(/ /g, " ")
+    .trim();
+
 /** The whole Quran: 114 surahs and 6,236 ayat with translation and audio. */
 export const fetchQuran = async (
   refresh: boolean
 ): Promise<{ surahs: Surah[]; ayat: SourceText[] }> => {
+  const qpc = await fetchJson<QpcHafs>(
+    "https://api.quran.com/api/v4/quran/verses/qpc_hafs",
+    "quran-qpc-hafs.json",
+    refresh
+  );
+  const qpcByKey = new Map(
+    qpc.verses.map((v) => [v.verse_key, qpcText(v.text_qpc_hafs)])
+  );
+  if (qpcByKey.size !== AYAH_COUNT)
+    throw new Error(
+      `Quran.com QPC Hafs: expected ${AYAH_COUNT} ayat, got ${qpcByKey.size}`
+    );
+
   const edition = (id: string) =>
     fetchJson<{ data: AlQuranFull }>(
       `https://api.alquran.cloud/v1/quran/${id}`,
@@ -131,7 +163,7 @@ export const fetchQuran = async (
       "alquran.cloud: translation or audio edition is incomplete"
     );
 
-  const basmalah = clean(ar[0].text);
+  const basmalah = qpcByKey.get("1:1")!;
 
   const ayat = arabic.flatMap((surah) =>
     surah.ayahs.map((ayah): SourceText => {
@@ -140,7 +172,11 @@ export const fetchQuran = async (
       return {
         key: `quran:${surah.number}:${ayah.numberInSurah}`,
         kind: "ayah",
-        arabic: stripBasmalah(surah.number, clean(ayah.text), basmalah),
+        arabic: stripBasmalah(
+          surah.number,
+          qpcByKey.get(`${surah.number}:${ayah.numberInSurah}`)!,
+          basmalah
+        ),
         translation: clean(en[i].text),
         translationBy: "Sahih International",
         citation: `Quran ${surah.number}:${ayah.numberInSurah}`,

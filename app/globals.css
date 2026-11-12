@@ -8,6 +8,16 @@ body,
   @apply h-full;
 }
 
+/* The mushaf font (lib/quran-font.ts): KFGQPC Uthmanic Script HAFS, from the
+   Quran Foundation's CDN, for the QPC Hafs text. Amiri Quran (--font-quran)
+   shows until it has loaded. Keep the URL in sync with QURAN_FONT_URL. */
+@font-face {
+  font-family: "KFGQPC Hafs";
+  src: url("https://verses.quran.foundation/fonts/quran/hafs/uthmanic_hafs/UthmanicHafs1Ver18.woff2")
+    format("woff2");
+  font-display: swap;
+}
+
 @layer base {
   :root {
     --background: 0 0% 100%;

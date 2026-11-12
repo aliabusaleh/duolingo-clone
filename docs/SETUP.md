@@ -37,6 +37,15 @@ versions, and fails on react-admin's peer dependencies.
 See [content/README.md](../content/README.md) for the sources and the
 content rules.
 
+## Quran text and font: permission first
+
+The import stores the King Fahd Complex's QPC Hafs text, and the app loads
+the Complex's mushaf font (KFGQPC Uthmanic Script HAFS) from the Quran
+Foundation's CDN (see [content/README.md](../content/README.md)). Before
+deploying this or running `content:import` against the production database,
+get the Complex's written permission, and keep a Quran Foundation developer
+account as its terms require. Local development is fine.
+
 ## Draft content
 
 Every imported lesson starts as `draft`. Drafts always show in development.

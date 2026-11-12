@@ -333,6 +333,9 @@ const en = {
     tafsirSource: "Source",
     tafsirOffline: "Tafsir needs an internet connection.",
     tafsirError: "The tafsir couldn't be loaded. Please try again.",
+    // Required credit for the mushaf text and font (lib/quran-font.ts).
+    fontCredit:
+      "Quran text and font: King Fahd Glorious Quran Printing Complex (KFGQPC Hafs), via the Quran Foundation (Quran.com).",
     search: "Search for a surah",
     ayahCount: (n: string) => `${n} ayat`,
     fromAyah: (n: string) => `from ayah ${n}`,
@@ -672,6 +675,8 @@ const ar: Messages = {
     tafsirSource: "المصدر",
     tafsirOffline: "التفسير يحتاج إلى اتصال بالإنترنت.",
     tafsirError: "تعذّر تحميل التفسير، حاول مرة أخرى.",
+    fontCredit:
+      "نص المصحف وخطّه: مجمع الملك فهد لطباعة المصحف الشريف (خط حفص)، عبر مؤسسة القرآن (Quran.com).",
     search: "ابحث عن سورة",
     ayahCount: (n: string) => `آياتها ${n}`,
     fromAyah: (n: string) => `من الآية ${n}`,

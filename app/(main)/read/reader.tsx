@@ -272,7 +272,8 @@ export const Reader = ({
           className="me-0.5 inline h-5 w-5 fill-gold-500 align-[-0.15em] text-gold-600"
         />
       )}
-      ﴿{formatNumber(locale, n)}﴾
+      {/* The mushaf font draws the number as its ornamented ayah marker. */}
+      <span className="font-quran">{formatNumber("ar", n)}</span>
     </span>
   );
 
